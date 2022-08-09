@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        .border-dotted{
+            border-style: dotted !important;
+        }
+        i{
+            cursor: pointer;
+        }
+        @media (max-width: 720px) {
+            /* .card{
+                width: 100vw;
+                height: 100vh;
+            } */
+        }
+    </style>
+</head>
+<div class="bg-light position-relative" style="min-height: 110vh;">
+    <div class="h-100 container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-lg-6">
+                <div class="card mt-5">
+                    <div class="pt-4 pb-4 text-center">
+                        <a href="index.html">
+                            <span><img src="/WebApp/AnnotationWebApp/wwwroot/images/SSD Logo.png" alt="LOGO" height="250"></span>
+                        </a>
+                    </div>
+                    
+    <div class="card-body p-4">
+        <!-- title-->
+        <div class="text-center w-75 m-auto">
+            <h5 class="text-muted text-center mt-0 fw-bold">회원가입</h5>
+            <p class="text-muted mb-4 small">Enter your email address and password.</p>
+        </div>
+        <!-- form -->
+
+        <form method="post" action="/Account/SignUp" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="@Model.Email" class="form-label mb-1 small">아이디(이메일)</label>
+                <input asp-for="@Model.Email" class="form-control" type="email" required placeholder="id@clew.tech">
+                <span asp-validation-for="@Model.Email" class="text-danger text-sm-start"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Password" class="form-label mb-1 small">비밀번호</label>
+                <div class="input-group input-group-merge">
+                    <input asp-for="@Model.Password" type="password" id="passwordConfirm" class="form-control passwordConfirm" placeholder="비밀번호를 입력하세요.">
+                    <div class="input-group-text" data-password="false">
+                        <span class="password-eye"><i class="fa fa-eye-slash" 
+                            id="togglePassword" onClick="viewPassword()"></i></span>
+                    </div>
+                </div>
+                <span asp-validation-for="@Model.Password" class="text-danger text-sm-start"></span>
+            </div>
+    
+            <div class="mb-3">
+                <label asp-for="@Model.ConfirmPassword" class="form-label">새 비밀번호 확인</label>
+                <div class="input-group input-group-merge">
+                    <input asp-for="@Model.ConfirmPassword" type="password" id="passwordConfirm_1" class="form-control passwordConfirm" placeholder="새 비밀번호를 다시 입력하세요.">
+                    <!-- <div class="input-group-text" data-password="false">
+                        <span class="password-eye"><i class="fa fa-eye-slash" 
+                            id="togglePassword" onClick="viewPassword()"></i></span>
+                    </div> -->
+                </div>
+                <span asp-validation-for="@Model.ConfirmPassword" class="text-danger text-sm-start"></span>
+            </div>
+                <div class="alert alert-danger alert-dismissible bg-danger text-white text-center p-2 border-0 fade show" role="alert">
+                    비밀번호가 일치하지 않습니다. 다시 시도 하세요.
+                    <button type="button" class="btn-close p-2 fs-7 small" data-bs-dismiss="alert" aria-label="Close"></button> 
+                </div>
+            <div class="mb-3 mt-0 text-center">
+                <button class="btn btn-primary" type="submit">Sign In</button>
+            </div>
+        </form>
+    </div> 
+    <!-- end card-body -->
+        
+</div> <!-- end card -->
+
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <p class="text-black">이미 계정이 있으신가요? <a href="login.html" class="text-primary ms-1"><b>LogIn Here</b></a></p>
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+                </div> 
+            </div>
+        </div>
+
+    <footer class="border-top footer bg-light text-black text-center justify-content-center">
+        <div class="container-fluid" >
+            <div class="row mx-auto text-center justify-content-center mt-5" style="max-width: 1424px;">
+                &copy;2022 Storage Solution for Doctors co,. ltd.34567
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    function viewPassword(){
+    const passwordInput = document.getElementById('passwordConfirm');
+    const passwordInput1 = document.getElementById('passwordConfirm_1');
+    const passStatus = document.getElementById('togglePassword');
+
+    if (passwordInput.type == 'password'){
+    passwordInput.type='text';
+    passStatus.className='fa fa-eye';
+   
+    }
+    else{
+    passwordInput.type='password';
+    passStatus.className='fa fa-eye-slash';
+  }
+  if (passwordInput1.type == 'password'){
+    passwordInput1.type='text';
+    passStatus.className='fa fa-eye';
+   
+    }
+    else{
+    passwordInput1.type='password';
+    passStatus.className='fa fa-eye-slash';
+  }
+
+}
+</script>
+</html>

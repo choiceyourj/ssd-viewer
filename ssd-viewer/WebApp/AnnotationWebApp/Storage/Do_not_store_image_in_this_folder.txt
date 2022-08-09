@@ -1,0 +1,3 @@
+
+This folder only for testing and debug.
+Do not store image in this folder. Store image in your storage, and set path to 'Storage' section in 'appsetting.json'

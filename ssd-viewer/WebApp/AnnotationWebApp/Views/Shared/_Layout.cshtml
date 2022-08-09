@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    @await Html.PartialAsync("_HeadMeta")
+    
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        .border-dotted{
+            border-style: dotted !important;
+        }
+
+        .backcolor{
+        background-color: rgba(0,0, 0, 0.7);
+        }
+
+        .bg{
+        background: grey;
+        }
+
+        i{
+        cursor: pointer;
+        }
+
+        svg{
+        animation: ani 0.8s linear;
+        transform-origin: 50% 50%;
+        transform: scale(0.9);
+        }
+
+        @keyframes ani {
+        25% {
+            opacity: 0.4;
+        }
+        100%{
+            transform: scale(1);
+            }
+        }
+
+        .logout-spin{
+        animation: rotate_image 1s linear;
+        transform-origin: 50% 50%;
+        }
+
+        @keyframes rotate_image {
+        100% {
+            transform: rotate(180deg);
+            }
+        }
+
+        @media (max-width: 720px) {
+        /* .card{
+            width: 100vw;
+            height: 100vh;
+        } */
+        }
+    </style>
+</head>
+<body>
+    
+    @RenderBody()
+    
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

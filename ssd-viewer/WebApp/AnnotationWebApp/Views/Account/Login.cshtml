@@ -1,0 +1,127 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model AnnotationWebApp.Models.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!-- body-->
+   <div class="bg-light position-relative" style="min-height: 100vh;">
+         <div class="h-100 container">
+            <div class="row d-flex justify-content-center">  
+                <div class="col-12 col-lg-6">
+                    <div class="card mt-5">
+            <!-- Logo -->
+                <div class="pt-4 pb-4 text-center">
+                    <a href="/Account/Index">
+                    <span><img src="~/images/logo/SSDLogo.png" alt="LOGO" height="250"></span>
+                    </a>
+                </div>
+
+            <!-- title-->
+    <div class="card-body p-4">
+        <div class="text-center w-75 m-auto">
+            <h5 class="text-muted text-center mt-0 fw-bold">로그인</h5>
+            <p class="text-muted mb-4 small">Enter your email address and password.</p>
+        </div>
+
+    <!-- form -->
+    <form method="post" action="/Account/Login" enctype="multipart/form-data">
+        @* Input Email *@
+        <div class="mb-3">
+            <label asp-for="@Model.Email" class="form-label mb-1 small">아이디(이메일)</label>
+            <input asp-for="@Model.Email" class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email.">
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+        </div>
+
+        @* Input Password *@
+      
+        <div class="mb-3">
+            <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a>
+            <label asp-for="@Model.Password" class="form-label mb-1 small">비밀번호</label>
+                <div class="input-group input-group-merge">
+                    <input asp-for="@Model.Password" type="password" id="passwordConfirm" class="form-control" placeholder="Enter your password.">
+            <div class="input-group-text" data-password="false">
+                <span class="password-eye"><i class="fa fa-eye-slash" 
+                    id="togglePassword" onClick="viewPassword()"></i></span>
+                </div>
+        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+        </div> 
+    </div>
+
+        @* 'Remember Me' Check Box *@
+         <div class="mb-3">
+            <div class="form-check">
+                <input asp-for="@Model.RememberMe" type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                <label asp-for="@Model.RememberMe" class="form-check-label small" for="checkbox-signin">다음 로그인 시 기억하기</label>
+            </div>
+        </div>
+
+
+        @* Error *@
+        @if (!ViewData.ModelState.IsValid)
+        {
+            @foreach (var modelState in ViewData.ModelState.Values)
+            {
+                foreach (ModelError error in modelState.Errors)
+                {
+                    <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        @error.ErrorMessage
+                    </div>
+                }
+            }
+        }
+
+
+        @* Login Submit Button *@
+        <div class="mb-3 mb-0 text-center">
+            <button class="btn btn-primary" type="submit"> Log In </button>
+        </div>
+    </form>
+        <!-- end form-->
+         </div> <!-- end card-body-->
+    </div>
+     <!-- end card-->
+
+   <div class="row mt-3">
+        <div class="col-12 text-center">
+            <p class="text-black">아직 계정이 없으신가요? <a href="/Account/SignUp" class="text-primary ms-1"><b>Sign Up</b></a></p>
+        </div> <!-- end col -->
+    </div>
+     <!-- end row -->
+</div>
+    </div>
+       </div>
+
+ <!-- footer -->
+ <footer class="border-top footer bg-light text-black text-center justify-content-center">
+        <div class="container-fluid" >
+            <div class="row mx-auto text-center justify-content-center mt-5" style="max-width: 1424px;">
+                &copy;2022 Storage Solution for Doctors co,.ltd
+            </div>
+        </div>
+    </footer>
+   </div>
+    <!-- end footer -->
+
+  @section Scripts{
+    <script src="~/js/index.js" asp-append-version="true"></script>
+
+    <script>
+        function viewPassword(){
+        const passwordInput = document.getElementById('passwordConfirm');
+        const passStatus = document.getElementById('togglePassword');
+
+        if (passwordInput.type == 'password'){
+        passwordInput.type='text';
+        passStatus.className='fa fa-eye';
+        }
+        else{
+        passwordInput.type='password';
+        passStatus.className='fa fa-eye-slash';
+    }
+
+    } 
+</script>
+}

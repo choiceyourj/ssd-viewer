@@ -1,0 +1,67 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.border-dotted{
+  border-style: dotted !important;
+}
+
+.backcolor{
+  background-color: rgba(0,0, 0, 0.7);
+}
+
+.bg{
+  background: grey;
+}
+
+i{
+  cursor: pointer;
+}
+
+svg{
+  animation: ani 0.8s linear;
+  transform-origin: 50% 50%;
+  transform: scale(0.9);
+}
+
+@keyframes ani {
+  25% {
+      opacity: 0.4;
+  }
+  100%{
+      transform: scale(1);
+  }
+}
+
+.logout-spin{
+  animation: rotate_image 1s linear;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 720px) {
+  /* .card{
+      width: 100vw;
+      height: 100vh;
+  } */
+}
