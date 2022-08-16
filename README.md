@@ -20,11 +20,11 @@ Local 환경에서 실행하는 것을 가정했을 때 필요한 것들
   sudo nano /etc/nginx/sites-available/myapp.conf 에서 Reverse proxy 설정 
   포트번호 회사 도메인과 연결
 
-  #3 nginx 서버와 vsftpd 연결 
+  3 nginx 서버와 vsftpd 연결 
   sudo apt-get install vsftpd
   파일질라 연결
   
-  #4 vscode에서 ASP.NET 프로젝트 생성
+  4 vscode에서 ASP.NET 프로젝트 생성
   
   ```
 
